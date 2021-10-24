@@ -1,16 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "../services/api";
 
-type AuthResponse = {
-  token: string;
-  user: {
-    id: string;
-    avatar_url: string;
-    name: string;
-    login: string;
-  };
-};
-
 type User = {
   id: string;
   name: string;
@@ -30,9 +20,20 @@ type AuthProvider = {
   children: ReactNode;
 };
 
+type AuthResponse = {
+  token: string;
+  user: {
+    id: string;
+    avatar_url: string;
+    name: string;
+    login: string;
+  };
+};
+
 export function AuthProvider(props: AuthProvider) {
   const [user, setUser] = useState<User | null>(null);
-  const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=1c34cf9469da48cb36dc`;
+
+  const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=4ef5fcaf378556d659c7`;
 
   async function signIn(githubCode: string) {
     const response = await api.post<AuthResponse>("authenticate", {
@@ -42,7 +43,9 @@ export function AuthProvider(props: AuthProvider) {
     const { token, user } = response.data;
 
     localStorage.setItem("@dowhile:token", token);
+
     api.defaults.headers.common.authorization = `Bearer ${token}`;
+
     setUser(user);
   }
 
@@ -65,11 +68,13 @@ export function AuthProvider(props: AuthProvider) {
 
   useEffect(() => {
     const url = window.location.href;
-    const hasGithubCode = url.includes("code=");
+    const hasGithubCode = url.includes("?code=");
 
     if (hasGithubCode) {
       const [urlWithoutCode, githubCode] = url.split("?code=");
+
       window.history.pushState({}, "", urlWithoutCode);
+
       signIn(githubCode);
     }
   }, []);

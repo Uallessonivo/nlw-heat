@@ -1,7 +1,8 @@
-import styles from "./styles.module.scss";
-import { VscGithubInverted } from "react-icons/vsc";
 import { useContext } from "react";
+import { VscGithubInverted } from "react-icons/vsc";
 import { AuthContext } from "../../context/auth";
+
+import styles from "./styles.module.scss";
 
 export function LoginBox() {
   const { signInUrl } = useContext(AuthContext);
