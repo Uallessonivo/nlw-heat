@@ -18,13 +18,12 @@
 
 O Projeto da **[Next Level Week](https://nextlevelweek.com/)** desta semana foi criar um sistema onde os usuarios podem dizer suas espectativas para o evento chamado DoWhile feito pela **[@Rocketseat](https://github.com/Rocketseat)**
 
-
-<a href="https://github.com/DinowSauron/Projeto-Next-Level-Week-7-Heat" target="_blank">
+<a>
     <img src="./assets/Home - Logado.png" width="100%" alt="">
     <p style="display: flex; margin-top: 20px">
         <img src="./assets/Home - Mobile.png" width="32%" alt="">
         <img src="./assets/HomeMobile.png" width="32%" alt="">
-        <img src="./assets/HomeMObile2.png" width="32%" alt="">
+        <img src="./assets/HomeMobile2.png" width="32%" alt="">
     </p>  
 </a>
 
